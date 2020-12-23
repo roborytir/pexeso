@@ -1,0 +1,51 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "commonjs",
+        "jsx": "react",
+        "sourceMap": true,
+        "outDir": "./build",
+        "strict": true,
+        "noImplicitAny": false,
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "baseUrl": ".",
+        "paths": {
+            "_Base/*": [
+                "src/*"
+            ],
+            "_Redux":[
+                "src/redux/*"
+            ],
+            "_Public/*": [
+                "public/*"
+            ],
+            "_Storybook/*": [
+                ".storybook/*"
+            ],
+            "_Lang": [
+                "src/lang/index.ts"
+            ],
+            "_Components/*": [
+                "src/components/*"
+            ],
+            "_Assets/*": [
+                "src/assets/*"
+            ],
+            "_styles/*": [
+                "src/styles/*"
+            ]
+        },
+        "rootDirs": [
+            "src",
+            ".storybook",
+            "config"
+        ],
+        "typeRoots": [
+            "./src/*",
+            "./node_modules/@types"
+        ],
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true
+    }
+}

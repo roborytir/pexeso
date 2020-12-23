@@ -1,0 +1,25 @@
+@import 'styles/colors.css';
+@import 'styles/fonts.css';
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    /* font-family: var(--fontsBase); */
+    font-family: system-ui;
+    font-size: 1.6em;
+    color: var(--c-text-base);
+    background-color: var(--c-background);
+}
+
+.test {
+    display: grid;
+    filter: blur(10px);
+}
