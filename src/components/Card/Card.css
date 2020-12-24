@@ -1,5 +1,6 @@
 .card {
     background-image: url('../../assets/cards.png');
+    transform: scale(0.75);
 }
 
 .cardSymbol {

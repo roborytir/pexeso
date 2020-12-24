@@ -19,7 +19,11 @@ export const Card = ({ sizeX = 128, sizeY = 128, isFlipped, isHidden, cardName, 
     return (
         <div
             style={{
-                backgroundPositionX: -posX, width: sizeX, height: sizeY
+                backgroundPositionX: -posX,
+                width: sizeX,
+                height: sizeY,
+                opacity: isHidden ? 0 : 1,
+                pointerEvents: (isHidden || isFlipped) ? 'none' : 'all'
             }}
             className={css.card}
             onClick={()=> {onClick && onClick(cardId);} }

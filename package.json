@@ -9,7 +9,8 @@
         "build:analyze": "npm run build:prod -- --analyze",
         "test": "jest --config jest.config.ts",
         "lint": "eslint \"**/*.t?(s|sx)\" -c ./.eslintrc.js",
-        "lint:fix": "eslint --fix \"**/*.t?(s|sx)\" -c ./.eslintrc.js"
+        "lint:fix": "eslint --fix \"**/*.t?(s|sx)\" -c ./.eslintrc.js",
+        "deploy": "gh-pages -d"
     },
     "repository": {
         "type": "git",
@@ -44,6 +45,7 @@
         "eslint-plugin-react": "^7.21.5",
         "eslint-plugin-react-hooks": "^4.2.0",
         "file-loader": "^6.2.0",
+        "gh-pages": "^3.1.0",
         "html-webpack-plugin": "^4.5.0",
         "jest": "^26.6.3",
         "mini-css-extract-plugin": "^1.3.3",
