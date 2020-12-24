@@ -18,7 +18,7 @@ export const BaseConfig: webpack.Configuration = {
     output: {
         path: BUILD_PATH,
         filename: '[name].js',
-        publicPath: resolve('/'),
+        publicPath: '/',
     },
     resolve: {
         plugins: [ new TsconfigPathsPlugin() ],

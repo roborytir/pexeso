@@ -16,6 +16,7 @@ export const plugins = (isProduction = false): WebpackPluginInstance[] => {
             minify: false,
             template: resolve(__dirname, '../public/index.html'),
             // favicon: resolve(__dirname, 'src/assets/favicon.ico'),
+            publicPath: '',
         }),
         new MiniCssExtractPlugin(),
         // new SpriteLoaderPlugin(),

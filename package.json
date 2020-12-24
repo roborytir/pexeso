@@ -10,7 +10,7 @@
         "test": "jest --config jest.config.ts",
         "lint": "eslint \"**/*.t?(s|sx)\" -c ./.eslintrc.js",
         "lint:fix": "eslint --fix \"**/*.t?(s|sx)\" -c ./.eslintrc.js",
-        "deploy": "gh-pages -d"
+        "deploy": "npm run build && gh-pages -d dist"
     },
     "repository": {
         "type": "git",
