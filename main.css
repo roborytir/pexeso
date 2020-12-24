@@ -1,0 +1,47 @@
+.Card-card-3iVDytAG {
+    background-image: url(./assets/cards.png);
+    -webkit-transform: scale(0.75);
+            transform: scale(0.75);
+}
+
+.Card-cardSymbol-7hO2SxH9 {
+    background-image: url(./assets/cards.png);
+}
+.CardContainer-cardContainer-30BB4bth {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    max-width: 120rem;
+    margin: 2rem auto;
+}
+:root {
+    --c-text-base: #141414;
+    --c-background: #272c36;
+}
+:root {
+    --fontsBase: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    "Helvetica", "Arial", sans-serif;
+}
+* {
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html {
+    font-size: 62.5%;
+}
+body {
+    /* font-family: var(--fontsBase); */
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    font-size: 1.6em;
+    color: #141414;
+    color: var(--c-text-base);
+    background-color: #272c36;
+    background-color: var(--c-background);
+}
+.index-test-346xYzrQ {
+    display: grid;
+    -webkit-filter: blur(10px);
+            filter: blur(10px);
+}
