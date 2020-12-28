@@ -27,7 +27,7 @@ export const rules = (isProduction = false): RuleSetRule[] =>[
         ]
     },
     {
-        test: /\.(png|jpg|ico|gif)$/,
+        test: /\.(png|jpg|ico|gif|svg)$/,
         use: {
             loader: 'file-loader',
             options: {

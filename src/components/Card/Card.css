@@ -1,8 +1,11 @@
 .card {
-    background-image: url('../../assets/cards.png');
+    background-image: url('../../assets/card.svg');
     transform: scale(0.75);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .cardSymbol {
-    background-image: url('../../assets/cards.png');
+    background-image: url('../../assets/cards.svg');
+    background-size: 1024px 1024px;
 }

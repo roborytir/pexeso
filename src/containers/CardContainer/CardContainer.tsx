@@ -15,7 +15,7 @@ export const CardContainer = () => {
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(addCardsAction(generateRandomCards()));
+        dispatch(addCardsAction(generateRandomCards(3)));
     }, [ dispatch ]);
 
     const handleCardClick = (cardId:number) => {

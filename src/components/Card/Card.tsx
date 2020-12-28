@@ -18,6 +18,7 @@ export const Card = ({ sizeX = 128, sizeY = 128, isFlipped, isHidden, cardName, 
 
     return (
         <div
+            data-cardname={cardName}
             style={{
                 backgroundPositionX: -posX,
                 width: sizeX,
