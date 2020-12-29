@@ -1,0 +1,26 @@
+.setsChanger {
+    display: flex;
+    justify-content: center;
+    color: var(--c-text-white);
+    margin-top: 1rem;
+}
+
+.leftArrow {
+    display: inline-block;
+    margin-right: 1rem;
+    border-top: 1rem solid transparent;
+    border-right: 2rem solid red;
+    border-bottom: 1rem solid transparent;
+    width: 0;
+    height: 0;
+}
+
+.rightArrow {
+    display: inline-block;
+    margin-left: 1rem;
+    border-top: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
+    border-left: 2rem solid red;
+    width: 0;
+    height: 0;
+}

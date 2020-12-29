@@ -1,3 +1,4 @@
+import { GameState } from './redux';
 import { IPexesoCard, PexesoActionsTypes } from './types';
 
 export const FLIP_CARD = 'FLIP_CARD';
@@ -5,6 +6,8 @@ export const ADD_CARDS = 'ADD_CARDS';
 export const SET_FIRST_CARD_FLIPPED = 'SET_FIRST_CARD_FLIPPED';
 export const RESET_CARDS = 'RESET_CARDS';
 export const HIDE_CARDS = 'HIDE_CARDS';
+export const UPDATE_SETS = 'UPDATE_SETS';
+export const CHANGE_GAME_STATE = 'CHANGE_GAME_STATE';
 
 export const flipCardAction = (payload: number): PexesoActionsTypes =>{
     return {
@@ -34,6 +37,19 @@ export const resetCardsAction = (): PexesoActionsTypes =>{
 export const hideCardsAction = (payload: {firstId:number, secondId:number}): PexesoActionsTypes =>{
     return {
         type: HIDE_CARDS,
+        payload,
+    };
+};
+
+export const updateNumberOfSetsAction = (payload:number): PexesoActionsTypes =>{
+    return {
+        type: UPDATE_SETS,
+        payload,
+    };
+};
+export const changeGameStateAction = (payload: GameState): PexesoActionsTypes =>{
+    return {
+        type: CHANGE_GAME_STATE,
         payload,
     };
 };

@@ -12,11 +12,12 @@ export const CardContainer = () => {
     const timerId = useRef<NodeJS.Timeout>();
     const timerActive = useRef(false);
     const isFirstCardFlipped = useSelector((state:IReduxState)=> state.isFirstCardFlipped);
+    const numberOfSets = useSelector((state:IReduxState)=> state.numberOfSets);
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(addCardsAction(generateRandomCards(3)));
-    }, [ dispatch ]);
+        dispatch(addCardsAction(generateRandomCards(numberOfSets)));
+    }, [ dispatch, numberOfSets ]);
 
     const handleCardClick = (cardId:number) => {
         if (timerActive.current) return;

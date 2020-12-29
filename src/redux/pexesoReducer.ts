@@ -1,9 +1,11 @@
 import {
-    ADD_CARDS, FLIP_CARD, HIDE_CARDS, RESET_CARDS, SET_FIRST_CARD_FLIPPED
+    ADD_CARDS, CHANGE_GAME_STATE, FLIP_CARD, HIDE_CARDS, RESET_CARDS, SET_FIRST_CARD_FLIPPED, UPDATE_SETS
 } from './pexesoActions';
 import { PexesoActionsTypes } from './types';
 
-const defaultState: IReduxState = { isFirstCardFlipped: false, cards: [] };
+const defaultState: IReduxState = {
+    isFirstCardFlipped: false, cards: [], gameState: 'menu', numberOfSets: 3
+};
 
 export const pexesoReducer = (state = defaultState, action: PexesoActionsTypes ):IReduxState => {
     switch (action.type){
@@ -40,6 +42,18 @@ export const pexesoReducer = (state = defaultState, action: PexesoActionsTypes )
                 return c;
             })
         };
+    case UPDATE_SETS:{
+        return {
+            ...state,
+            numberOfSets: action.payload
+        };
+    }
+    case CHANGE_GAME_STATE:{
+        return {
+            ...state,
+            gameState: action.payload
+        };
+    }
     default:
         return state;
     }
