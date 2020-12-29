@@ -1,21 +1,97 @@
 .Card-card-3iVDytAG {
-    background-image: url(./assets/cards.png);
+    background-image: url(./assets/card.svg);
     -webkit-transform: scale(0.75);
             transform: scale(0.75);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .Card-cardSymbol-7hO2SxH9 {
-    background-image: url(./assets/cards.png);
+    background-image: url(./assets/cards.svg);
+    background-size: 1024px 1024px;
 }
 .CardContainer-cardContainer-30BB4bth {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    grid-template-columns: repeat(8, minmax(100px, 1fr));
     max-width: 120rem;
     margin: 2rem auto;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    justify-items: center;
+}
+.GameOver-gameOver-3DFxGc8e {
+    color: var(--c-text-white);
+    margin: 10rem auto;
+    text-align: center;
+}
+.SetsChanger-setsChanger-1w2mjo5q {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    color: var(--c-text-white);
+    margin-top: 1rem;
+}
+
+.SetsChanger-leftArrow-3fvcTSRa {
+    display: inline-block;
+    margin-right: 1rem;
+    border-top: 1rem solid transparent;
+    border-right: 2rem solid var(--c-primary);
+    border-bottom: 1rem solid transparent;
+    width: 0;
+    height: 0;
+}
+
+.SetsChanger-rightArrow-3Cy27Vkv {
+    display: inline-block;
+    margin-left: 1rem;
+    border-top: 1rem solid transparent;
+    border-bottom: 1rem solid transparent;
+    border-left: 2rem solid var(--c-primary);
+    width: 0;
+    height: 0;
+}
+.MainMenu-mainMenu-1QC0Z7wy {
+    margin: 10rem auto;
+    max-width: 96rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    color: var(--c-text-white);
+}
+
+.MainMenu-title-2Sgozk8S {
+    text-align: center;
+    color: var(--c-text-white);
+    margin-bottom: 1rem;
+}
+
+.MainMenu-setsNumber-_fhxXWEh{
+    min-width: 10rem;
+    max-width: 10rem;
+}
+
+.MainMenu-playButton-3rxZWKk9 {
+    margin-top: 2rem;
+    min-width: 10rem;
+    max-width: 10rem;
 }
 :root {
     --c-text-base: #141414;
+    --c-text-white: #ececec;
     --c-background: #272c36;
+    --c-primary: #2c6eeb;
 }
 :root {
     --fontsBase: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
