@@ -10,7 +10,7 @@ export interface ISetsChangerProps {
 export const SetsChanger = ({ amount, onChange }: ISetsChangerProps) => {
 
     const handleChange = (decrease = false) => {
-        if (decrease && amount > 3){
+        if (decrease && amount > 1){
             onChange(amount - 1);
         }
 

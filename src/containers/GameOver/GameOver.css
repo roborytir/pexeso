@@ -1,0 +1,5 @@
+.gameOver {
+    color: var(--c-text-white);
+    margin: 10rem auto;
+    text-align: center;
+}

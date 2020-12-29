@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { generateRandomCards } from '_Base/components/Card/utils';
 import {
-    addCardsAction, flipCardAction, setFirstCardFlippedAction, hideCardsAction, resetCardsAction
+    addCardsAction, flipCardAction, setFirstCardFlippedAction, hideCardsAction, resetCardsAction, changeGameStateAction
 } from '_Base/redux/pexesoActions';
 import Card from '../../components/Card/Card';
 import css from './CardContainer.css';
@@ -18,6 +18,15 @@ export const CardContainer = () => {
     useEffect(()=>{
         dispatch(addCardsAction(generateRandomCards(numberOfSets)));
     }, [ dispatch, numberOfSets ]);
+
+    useEffect(()=>{
+        if (cards.length > 0 && cards.every(c=>c.isHidden)){
+            dispatch(addCardsAction([]));
+            dispatch(changeGameStateAction('gameover'));
+        }
+
+    }, [ cards, dispatch ]);
+
 
     const handleCardClick = (cardId:number) => {
         if (timerActive.current) return;

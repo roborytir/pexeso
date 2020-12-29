@@ -12,4 +12,4 @@ declare global {
 declare type GameState =
 | 'menu'
 | 'playing'
-| 'gameend'
+| 'gameover'
