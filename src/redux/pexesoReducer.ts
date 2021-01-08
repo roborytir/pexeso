@@ -4,7 +4,7 @@ import {
 import { PexesoActionsTypes } from './types';
 
 const defaultState: IReduxState = {
-    isFirstCardFlipped: false, cards: [], gameState: 'menu', numberOfSets: 3
+    isFirstCardFlipped: false, cards: [], gameState: 'playing', numberOfSets: 3
 };
 
 export const pexesoReducer = (state = defaultState, action: PexesoActionsTypes ):IReduxState => {

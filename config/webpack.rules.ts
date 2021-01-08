@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import { RuleSetRule } from 'webpack';
 import { ASSETS_PATH } from './webpack.config.base';
 
-export const rules = (isProduction = false): RuleSetRule[] =>[
+export const rules = (isProduction = false, storybook = false): RuleSetRule[] =>[
     {
         test: /\.ts(x)?$/,
         use: [ 'babel-loader', 'ts-loader' ],
@@ -12,7 +12,7 @@ export const rules = (isProduction = false): RuleSetRule[] =>[
     {
         test: /\.css$/,
         use: [
-            MiniCssExtractPlugin.loader,
+            storybook ? 'style-loader' : MiniCssExtractPlugin.loader,
             {
                 loader: 'css-loader',
                 options: {
