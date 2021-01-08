@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 110 110" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g id="CardBack">
+        <path d="M110,16.5C110,7.393 102.607,-0 93.5,-0L16.5,-0C7.393,-0 0,7.393 0,16.5L0,93.5C0,102.607 7.393,110 16.5,110L93.5,110C102.607,110 110,102.607 110,93.5L110,16.5Z" style="fill:#e9e9e1;"/>
+        <path d="M110,16.5C110,7.393 102.607,-0 93.5,-0L16.5,-0C7.393,-0 0,7.393 0,16.5L0,93.5C0,102.607 7.393,110 16.5,110L93.5,110C102.607,110 110,102.607 110,93.5L110,16.5ZM107,16.5L107,93.5C107,100.951 100.951,107 93.5,107C93.5,107 16.5,107 16.5,107C9.049,107 3,100.951 3,93.5L3,16.5C3,9.049 9.049,3 16.5,3L93.5,3C100.951,3 107,9.049 107,16.5Z" style="fill:#4d99e5;"/>
+    </g>
+</svg>

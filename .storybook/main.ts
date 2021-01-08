@@ -1,26 +1,32 @@
-const path = require('path');
-import { rules } from '../config/webpack.rules'; 
+import { rules } from '../config/webpack.rules';
+import SpriteLoaderPlugin from 'svg-sprite-loader/plugin';
+import { Configuration } from 'webpack';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
 
-// Export a function. Accept the base config as the only param.
 module.exports = {
     stories: [
-        "../src/**/*.stories.mdx",
-        "../src/**/*.stories.@(js|jsx|ts|tsx)",
-        "../src/**/*.story.@(js|jsx|ts|tsx)"
-      ],
-      "addons": [
-        "@storybook/addon-links",
-        "@storybook/addon-essentials"
-      ],
-  webpackFinal:(config, { configType }) => {
-    // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
-    // You can change the configuration based on that.
-    // 'PRODUCTION' is used when building the static version of storybook.
+        '../src/**/*.stories.mdx',
+        '../src/**/*.stories.@(js|jsx|ts|tsx)',
+        '../src/**/*.story.@(js|jsx|ts|tsx)'
+    ],
+    'addons': [
+        '@storybook/addon-links',
+        '@storybook/addon-essentials'
+    ],
+    webpackFinal: (config: Configuration):Configuration => {
+        if (config.module && config.module.rules) {
+            config.module.rules = rules(false, true);
+        }
+        if (config.plugins){
+            config.plugins = [
+                ...config.plugins,
+                new SpriteLoaderPlugin(),
+            ];
+        }
+        if (config.resolve && config.resolve.plugins){
+            config.resolve.plugins = [ new TsconfigPathsPlugin() ];
+        }
 
-    // Make whatever fine-grained changes you need
-    config.module.rules = rules(false,true);
-
-    // Return the altered config
-    return config;
-  },
+        return config;
+    },
 };

@@ -27,7 +27,56 @@ export const rules = (isProduction = false, storybook = false): RuleSetRule[] =>
         ]
     },
     {
-        test: /\.(png|jpg|ico|gif|svg)$/,
+        test: /\.svg$/,
+        oneOf: [
+            {
+                resourceQuery: /sprite/,
+                use: [
+                    {
+                        loader: 'svg-sprite-loader',
+                        options: {
+                            spriteFilename: (svgpath: string) => {
+                                const path = svgpath.replace(/\\/g, '/');
+                                const fileName = path.match(/(?<=assets\/).*(?=\/)/);
+                                if (fileName && fileName[0]) {
+                                    return `sprites/${fileName[0]}-sprite.svg`;
+                                }
+                                return 'sprites/assets-sprite.svg';
+                            },
+                            extract: true,
+                            outputPath: ASSETS_PATH,
+                            publicPath: ASSETS_PATH,
+                        }
+                    },
+                    {
+                        loader: 'svgo-loader',
+                        options: {
+                            plugins: [
+                                { removeTitle: false },
+                                { cleanupIDs: false },
+                                { removeStyleElement: true },
+                                { removeUselessStrokeAndFill: true },
+                            ]
+                        }
+                    },
+                ]
+            },
+            {
+                use: [
+                    { loader: 'babel-loader' },
+                    {
+                        loader: 'react-svg-loader',
+                        options: {
+                            jsx: false,
+                            svgo: { plugins: [ { removeTitle: false }, { cleanupIDs: false } ] }
+                        }
+                    },
+                ]
+            },
+        ]
+    },
+    {
+        test: /\.(png|jpg|ico|gif)$/,
         use: {
             loader: 'file-loader',
             options: {
