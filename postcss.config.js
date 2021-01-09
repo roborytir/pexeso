@@ -1,4 +1,4 @@
 module.exports = {
     map: false,
-    plugins: [ 'postcss-import', 'postcss-preset-env' ]
+    plugins: [ require('postcss-import'), require('postcss-preset-env') ]
 };

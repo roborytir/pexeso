@@ -4,6 +4,7 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import CopyPlugin from 'copy-webpack-plugin';
+import SpriteLoaderPlugin from 'svg-sprite-loader/plugin';
 import { resolve } from 'path';
 import { IS_ANALYZE_ENABLED } from './webpack.config.base';
 
@@ -19,7 +20,7 @@ export const plugins = (isProduction = false): WebpackPluginInstance[] => {
             publicPath: '',
         }),
         new MiniCssExtractPlugin(),
-        // new SpriteLoaderPlugin(),
+        new SpriteLoaderPlugin(),
         // new CopyPlugin({
         //     patterns: [
         //         {
