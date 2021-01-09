@@ -9,10 +9,7 @@ module.exports = {
         '../src/**/*.stories.@(js|jsx|ts|tsx)',
         '../src/**/*.story.@(js|jsx|ts|tsx)'
     ],
-    'addons': [
-        '@storybook/addon-links',
-        '@storybook/addon-essentials'
-    ],
+    'addons': [ '@storybook/addon-essentials' ],
     webpackFinal: (config: Configuration):Configuration => {
         if (config.module && config.module.rules) {
             config.module.rules = rules(false, true);
