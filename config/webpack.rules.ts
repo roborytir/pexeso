@@ -12,7 +12,12 @@ export const rules = (isProduction = false, storybook = false): RuleSetRule[] =>
     {
         test: /\.css$/,
         use: [
-            storybook ? 'style-loader' : MiniCssExtractPlugin.loader,
+            isProduction
+                ? {
+                    loader: MiniCssExtractPlugin.loader,
+                    options: { publicPath: ASSETS_PATH }
+                }
+                : 'style-loader',
             {
                 loader: 'css-loader',
                 options: {
@@ -27,9 +32,9 @@ export const rules = (isProduction = false, storybook = false): RuleSetRule[] =>
         ]
     },
     {
-        test: /\.svg$/,
         oneOf: [
             {
+                test: /\.svg$/,
                 resourceQuery: /sprite/,
                 use: [
                     {
@@ -62,35 +67,24 @@ export const rules = (isProduction = false, storybook = false): RuleSetRule[] =>
                 ]
             },
             {
-                use: [
-                    { loader: 'babel-loader' },
-                    {
-                        loader: 'react-svg-loader',
-                        options: {
-                            jsx: false,
-                            svgo: { plugins: [ { removeTitle: false }, { cleanupIDs: false } ] }
+                test: /\.(png|jpg|ico|gif|svg)$/,
+                use: {
+                    loader: 'file-loader',
+                    options: {
+                        outputPath: ASSETS_PATH,
+                        publicPath: ASSETS_PATH,
+                        name: (resourcePath: string) => {
+                            const path = resourcePath.replace(/\\/g, '/');
+                            const fileName = path.match(/(?<=assets\/).*$/);
+                            if (fileName && fileName[0]) {
+                                return fileName[0];
+                            }
+                            return '[folder]/[name].[ext]';
                         }
-                    },
-                ]
+                    }
+                }
             },
         ]
     },
-    {
-        test: /\.(png|jpg|ico|gif)$/,
-        use: {
-            loader: 'file-loader',
-            options: {
-                outputPath: ASSETS_PATH,
-                publicPath: ASSETS_PATH,
-                name: (resourcePath: string) => {
-                    const path = resourcePath.replace(/\\/g, '/');
-                    const fileName = path.match(/(?<=assets\/).*$/);
-                    if (fileName && fileName[0]) {
-                        return fileName[0];
-                    }
-                    return '[folder]/[name].[ext]';
-                }
-            }
-        }
-    },
+
 ];

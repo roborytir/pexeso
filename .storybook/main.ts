@@ -26,6 +26,14 @@ module.exports = {
         if (config.resolve && config.resolve.plugins){
             config.resolve.plugins = [ new TsconfigPathsPlugin() ];
         }
+        config.stats = {
+            children: false,
+            chunkModules: false,
+            modules: false,
+            hash: false,
+            publicPath: true,
+            performance: false,
+        };
 
         return config;
     },
