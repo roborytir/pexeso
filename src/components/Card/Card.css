@@ -1,6 +1,5 @@
 .card {
     background-image: url('../../assets/card.svg');
-    transform: scale(0.75);
     background-size: cover;
     background-repeat: no-repeat;
     transition: transform 0.15s ease-out;
