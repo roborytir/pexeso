@@ -2,14 +2,7 @@ declare module '*.css';
 declare module '*.jpg';
 declare module '*.png';
 declare module '*.gif';
-
-declare module '*.svg' {
-    import React = require('react');
-    export const ReactComponent: React.FunctionComponent<React.SVGProps<
-        SVGSVGElement
-    >>;
-    export default ReactComponent;
-}
+declare module '*.svg';
 
 declare module '*.svg?sprite' {
     const BrowserSprite:BrowserSprite;

@@ -44,9 +44,9 @@ export const rules = (isProduction = false, storybook = false): RuleSetRule[] =>
                                 const path = svgpath.replace(/\\/g, '/');
                                 const fileName = path.match(/(?<=assets\/).*(?=\/)/);
                                 if (fileName && fileName[0]) {
-                                    return `sprites/${fileName[0]}-sprite.svg`;
+                                    return `/sprites/${fileName[0]}-sprite.svg`;
                                 }
-                                return 'sprites/assets-sprite.svg';
+                                return '/sprites/assets-sprite.svg';
                             },
                             extract: true,
                             outputPath: ASSETS_PATH,

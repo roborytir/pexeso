@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import css from './Card.css';
 import { getCardDataCoordinates } from './utils';
 import CardBack from '_Assets/card-back.svg?sprite';
+import Sprite from '../Sprite/Sprite';
 
 export interface ICardProps {
     onClick?: (cardId:number) => void;
@@ -47,7 +48,7 @@ export const Card = ({ sizeX = 128, sizeY = 128, isFlipped, isHidden, cardName, 
             ref.current.style.transform = defaultRotation;
         });
     };
-
+    console.log(CardBack);
 
 
     return (
@@ -67,6 +68,7 @@ export const Card = ({ sizeX = 128, sizeY = 128, isFlipped, isHidden, cardName, 
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
+            <Sprite sprite={CardBack} />
             {isFlipped && (
                 <div style={{
                     backgroundPositionX: -x,
