@@ -24,47 +24,48 @@ export function getCardDataCoordinates(name:string){
     };
 }
 const colorSet = [
-    'C62D1C',
-    '31C61C',
-    'C6B41C',
-    '1C4EC6',
-    '881CC6'
+    '#C62D1C',
+    '#31C61C',
+    '#C6B41C',
+    '#1C4EC6',
+    '#881CC6'
 ];
 
 export function generateRandomColor(){
     return colorSet[Math.floor(Math.random() * colorSet.length)];
 }
 
-export function generateRandomCards(sets = cardsData.length):IPexesoCard[]{
+export function generateRandomCards(numberOfSets = cardSymbols.length, numberOfColors = colorSet.length):IPexesoCard[]{
     const cards: IPexesoCard[] = [];
-    let flattenedCardsList:ICardData[] = [];
+    let cardId = 0;
 
-    for (let c = 0; c < sets; c++) {
-        flattenedCardsList = [ ...flattenedCardsList, ...cardsData[c] ];
+    for (let i = 0; i < numberOfSets; i++) {
+        const element = cardSymbols[i];
+        for (let c = 0; c < numberOfColors; c++){
+            cards.push({
+                cardName: element.name,
+                cardId: cardId,
+                isFlipped: false,
+                isHidden: false,
+                color: colorSet[c],
+            });
+            cardId++;
+            cards.push({
+                cardName: element.name,
+                cardId: cardId,
+                isFlipped: false,
+                isHidden: false,
+                color: colorSet[c],
+            });
+            cardId++;
+        }
+    }
+    console.dir(cards);
 
-    }
-
-    for (let i = 0; i < flattenedCardsList.length; i++) {
-        const element = flattenedCardsList[i];
-        const color = generateRandomColor();
-        cards.push({
-            cardName: element.name,
-            cardId: i,
-            isFlipped: false,
-            isHidden: false,
-            color: color,
-        });
-        cards.push({
-            cardName: element.name,
-            cardId: i + flattenedCardsList.length,
-            isFlipped: false,
-            isHidden: false,
-            color: color,
-        });
-    }
-    for (let i = cards.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [ cards[i], cards[j] ] = [ cards[j], cards[i] ];
-    }
+    // Shuffle cards
+    // for (let i = cards.length - 1; i > 0; i--) {
+    //     const j = Math.floor(Math.random() * (i + 1));
+    //     [ cards[i], cards[j] ] = [ cards[j], cards[i] ];
+    // }
     return cards;
 }

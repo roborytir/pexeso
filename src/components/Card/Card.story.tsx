@@ -10,6 +10,7 @@ Template.args = {
     cardId: 0,
     cardName: 'heart',
     isFlipped: false,
+    isHidden: true,
     color: 'white'
 };
 Template.argTypes = { onClick: { table: { disable: true }, action: 'flip card' } };

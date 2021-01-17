@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import css from './Card.css';
-import { getCardDataCoordinates, getCardSymbol } from './utils';
+import { getCardSymbol } from './utils';
 import CardBack from '_Assets/card-back.svg?sprite';
 import CardFront from '_Assets/card-front.svg?sprite';
 import Sprite from '../Sprite/Sprite';
@@ -16,17 +16,20 @@ export interface ICardProps {
     sizeY?:number;
 }
 
-export const Card = ({ sizeX = 128, sizeY = 128, isFlipped, isHidden, cardName, cardId, onClick, color }: ICardProps) => {
-    const { x, y } = getCardDataCoordinates(cardName);
-    const posX = isFlipped ? sizeX : 0;
+export const Card = ({
+    sizeX = 128, sizeY = 128,
+    isFlipped, isHidden, cardName, cardId, onClick, color
+}: ICardProps) => {
     const ref = useRef<HTMLDivElement>(null);
     let flippedRotation = isFlipped ? -180 : 0;
     const defaultRotation = `perspective(100px) rotateX(0deg) rotateY(${flippedRotation}deg) scale(0.75)`;
     const newTransform = useRef(defaultRotation);
 
     useEffect(()=>{
-
-    }, []);
+        if (ref.current){
+            ref.current.style.transform = defaultRotation;
+        }
+    }, [ isFlipped, defaultRotation ]);
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         newTransform.current = calculateCardTranfsorm(
@@ -71,9 +74,9 @@ export const Card = ({ sizeX = 128, sizeY = 128, isFlipped, isHidden, cardName, 
             style={{
                 width: sizeX,
                 height: sizeY,
-                opacity: isHidden ? 0 : 1,
                 pointerEvents: (isHidden) ? 'none' : 'all',
-                transform: newTransform.current
+                transform: newTransform.current,
+                animationName: isHidden ? 'popout' : 'initial',
             }}
             className={css.card}
             onClick={handleClick}

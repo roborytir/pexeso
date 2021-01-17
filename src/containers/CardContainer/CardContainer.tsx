@@ -16,13 +16,15 @@ export const CardContainer = () => {
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        dispatch(addCardsAction(generateRandomCards(numberOfSets)));
+        dispatch(addCardsAction(generateRandomCards()));
     }, [ dispatch, numberOfSets ]);
 
     useEffect(()=>{
         if (cards.length > 0 && cards.every(c=>c.isHidden)){
-            dispatch(addCardsAction([]));
-            dispatch(changeGameStateAction('gameover'));
+            setTimeout(() => {
+                dispatch(addCardsAction([]));
+                dispatch(changeGameStateAction('gameover'));
+            }, 1000);
         }
 
     }, [ cards, dispatch ]);
@@ -48,7 +50,7 @@ export const CardContainer = () => {
                 dispatch(resetCardsAction());
                 dispatch(setFirstCardFlippedAction(false));
                 timerActive.current = false;
-            }, 2000);
+            }, 1000);
         }
     };
 
