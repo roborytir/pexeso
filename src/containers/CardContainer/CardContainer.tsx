@@ -62,6 +62,7 @@ export const CardContainer = () => {
                         cardName={card.cardName}
                         isFlipped={card.isFlipped}
                         isHidden={card.isHidden}
+                        color={card.color}
                         onClick={handleCardClick}
                     />
                 ))}

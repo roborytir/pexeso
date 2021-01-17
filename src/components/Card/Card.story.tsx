@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Meta, Story } from '@storybook/react';
 import { Card, ICardProps } from './Card';
 
-export const Template:Story<ICardProps> = (args ) => <Card {...args}/> ;
+export const Template:Story<ICardProps> = (args ) => {
+    const [ flip, setFlip ] = useState(true);
+    return (<Card {...args} isFlipped={flip} onClick={()=>{setFlip(!flip);}}/>);
+};
 Template.args = {
     cardId: 0,
-    cardName: 'heart_red',
+    cardName: 'heart',
     isFlipped: false,
+    color: 'white'
 };
 Template.argTypes = { onClick: { table: { disable: true }, action: 'flip card' } };
 Template.storyName = 'Card';

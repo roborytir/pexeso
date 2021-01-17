@@ -1,37 +1,51 @@
 import React, { useEffect, useRef } from 'react';
 import css from './Card.css';
-import { getCardDataCoordinates } from './utils';
+import { getCardDataCoordinates, getCardSymbol } from './utils';
 import CardBack from '_Assets/card-back.svg?sprite';
+import CardFront from '_Assets/card-front.svg?sprite';
 import Sprite from '../Sprite/Sprite';
 
 export interface ICardProps {
-    onClick?: (cardId:number) => void;
+    onClick: (cardId:number) => void;
     cardName: string;
     cardId: number;
+    color: string;
     isFlipped?:boolean;
     isHidden?:boolean;
     sizeX?: number;
     sizeY?:number;
 }
 
-export const Card = ({ sizeX = 128, sizeY = 128, isFlipped, isHidden, cardName, cardId, onClick }: ICardProps) => {
+export const Card = ({ sizeX = 128, sizeY = 128, isFlipped, isHidden, cardName, cardId, onClick, color }: ICardProps) => {
     const { x, y } = getCardDataCoordinates(cardName);
     const posX = isFlipped ? sizeX : 0;
     const ref = useRef<HTMLDivElement>(null);
-    const flippedRotation = isFlipped ? -180 : 0;
+    let flippedRotation = isFlipped ? -180 : 0;
     const defaultRotation = `perspective(100px) rotateX(0deg) rotateY(${flippedRotation}deg) scale(0.75)`;
+    const newTransform = useRef(defaultRotation);
 
     useEffect(()=>{
 
     }, []);
 
-    console.log(isFlipped);
-    const calculateCardTranfsorm = (mouseX:number, mouseY:number) => {
-        if (!ref.current) return '';
+    const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        newTransform.current = calculateCardTranfsorm(
+            e.clientX, e.clientY, true
+        );
+        onClick(cardId);
+    };
+
+    const calculateCardTranfsorm = (
+        mouseX:number, mouseY:number, invert?:boolean
+    ) => {
+        if (!ref.current) return defaultRotation;
         const boundingBox = ref.current.getBoundingClientRect();
         const rotationLimit = 4;
         const rotateY = (mouseX - boundingBox.x - (boundingBox.width / 2)) / rotationLimit;
         const rotateX = (mouseY - boundingBox.y - (boundingBox.height / 2)) / rotationLimit;
+        if (invert){
+            flippedRotation = isFlipped ? 0 : -180;
+        }
         return `perspective(100px) rotateX(${-rotateX}deg) rotateY(${rotateY + flippedRotation}deg) scale(0.75)`;
     };
 
@@ -48,34 +62,34 @@ export const Card = ({ sizeX = 128, sizeY = 128, isFlipped, isHidden, cardName, 
             ref.current.style.transform = defaultRotation;
         });
     };
-    console.log(CardBack);
-
+    const Symbol = getCardSymbol(cardName);
 
     return (
         <div
             data-cardname={cardName}
             ref={ref}
             style={{
-                backgroundPositionX: -posX,
                 width: sizeX,
                 height: sizeY,
                 opacity: isHidden ? 0 : 1,
-                transform: defaultRotation,
-                pointerEvents: (isHidden) ? 'none' : 'all'
+                pointerEvents: (isHidden) ? 'none' : 'all',
+                transform: newTransform.current
             }}
             className={css.card}
-            onClick={()=> {onClick && onClick(cardId);} }
+            onClick={handleClick}
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
         >
-            <Sprite sprite={CardBack} />
+            {isFlipped ? <Sprite sprite={CardFront} /> : <Sprite sprite={CardBack} />}
+
             {isFlipped && (
-                <div style={{
-                    backgroundPositionX: -x,
-                    backgroundPositionY: -y,
-                    width: sizeX,
-                    height: sizeY,
-                }} className={css.cardSymbol}
+                <Symbol
+                    className={css.cardSymbol}
+                    style={{
+                        maxWidth: sizeX,
+                        maxHeight: sizeY,
+                        fill: color
+                    }}
                 />
             )}
         </div>

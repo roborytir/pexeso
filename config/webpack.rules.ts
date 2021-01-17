@@ -59,11 +59,21 @@ export const rules = (isProduction = false, storybook = false): RuleSetRule[] =>
                             plugins: [
                                 { removeTitle: false },
                                 { cleanupIDs: false },
-                                { removeStyleElement: true },
-                                { removeUselessStrokeAndFill: true },
+                                { removeStyleElement: false },
+                                { removeUselessStrokeAndFill: false },
                             ]
                         }
                     },
+                ]
+            },
+            {
+                test: /\.svg$/,
+                resourceQuery: /component/,
+                use: [
+                    {
+                        loader: '@svgr/webpack',
+                        options: {}
+                    }
                 ]
             },
             {

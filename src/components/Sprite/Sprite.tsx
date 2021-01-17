@@ -1,12 +1,12 @@
 import React from 'react';
 
-export interface ISpriteProps {
+export interface ISpriteProps extends React.SVGAttributes<HTMLOrSVGElement> {
     sprite: BrowserSprite;
 }
 
-export const Sprite = ({ sprite }: ISpriteProps) => {
+export const Sprite = ({ sprite, ...rest }: ISpriteProps) => {
     return (
-        <svg viewBox={sprite.viewBox}>
+        <svg viewBox={sprite.viewBox} {...rest} >
             <use href={sprite.url}/>
         </svg>
     );

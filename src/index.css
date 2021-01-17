@@ -19,7 +19,6 @@ body {
     background-color: var(--c-background);
 }
 
-.test {
-    display: grid;
-    filter: blur(10px);
+svg path {
+    fill: inherit;
 }

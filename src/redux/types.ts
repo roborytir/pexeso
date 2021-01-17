@@ -8,7 +8,7 @@ export interface IPexesoCard {
     cardName: string;
     isFlipped: boolean;
     isHidden: boolean;
-
+    color: string;
 }
 
 export interface IPlaygroundState {
