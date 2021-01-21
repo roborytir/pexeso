@@ -1,20 +1,20 @@
 import React from 'react';
-import { cardsData } from '../Card/cardsData';
 import css from './SetsChanger.css';
 
 export interface ISetsChangerProps {
     onChange: (amount: number) => void;
     amount: number;
+    maxAmount: number;
 }
 
-export const SetsChanger = ({ amount, onChange }: ISetsChangerProps) => {
+export const SetsChanger = ({ amount, onChange, maxAmount }: ISetsChangerProps) => {
 
     const handleChange = (decrease = false) => {
         if (decrease && amount > 1){
             onChange(amount - 1);
         }
 
-        if (!decrease && amount < cardsData.length){
+        if (!decrease && amount < maxAmount){
             onChange(amount + 1);
         }
 

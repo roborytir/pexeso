@@ -1,14 +1,16 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
 import SetsChanger from '_Base/components/SetsChanger/SetsChanger';
-import { updateNumberOfSetsAction, changeGameStateAction } from '_Base/redux/pexesoActions';
+import { cardSymbols, colorSet } from '_Base/logic/cardsData';
 import css from './MainMenu.css';
 
+interface IMainMenuProps {
+    onGameStart: (sets:number, colors:number) => void;
+}
 
-export const MainMenu = () => {
+export const MainMenu = ({ onGameStart }:IMainMenuProps) => {
 
-    const numberOfSets = useSelector((state:IReduxState)=> state.numberOfSets);
-    const dispatch = useDispatch();
+    const [ numberOfSets, setNumberOfSets ] = useState(3);
+    const [ numberOfColors, setNumberOfColors ] = useState(3);
 
     return (
         <div className={css.mainMenu}>
@@ -17,12 +19,19 @@ export const MainMenu = () => {
                 <h3>Number of sets</h3>
                 <SetsChanger
                     amount={numberOfSets}
-                    onChange={(amount)=> {dispatch(updateNumberOfSetsAction(amount));}}
+                    onChange={(amount)=> {setNumberOfSets(amount);}}
+                    maxAmount={cardSymbols.length}
+                />
+                <h3>Number of Colors</h3>
+                <SetsChanger
+                    amount={numberOfColors}
+                    onChange={(amount)=> {setNumberOfColors(amount);}}
+                    maxAmount={colorSet.length}
                 />
             </div>
             <button
                 className={css.playButton}
-                onClick={()=>{dispatch( changeGameStateAction('playing'));}}
+                onClick={()=>{onGameStart(numberOfSets, numberOfColors) ;}}
             >
                 Play
             </button>

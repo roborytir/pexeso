@@ -1,54 +1,78 @@
-import React, { useEffect, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { generateRandomCards } from '_Base/components/Card/utils';
-import {
-    addCardsAction, flipCardAction, setFirstCardFlippedAction, hideCardsAction, resetCardsAction, changeGameStateAction
-} from '_Base/redux/pexesoActions';
+import React, {
+    useEffect, useRef, useState
+} from 'react';
+import { generateRandomCards } from '_Base/logic/utils';
+import { IPexesoCard } from '_Base/logic/types';
+
 import Card from '../../components/Card/Card';
 import css from './CardContainer.css';
 
-export const CardContainer = () => {
-    const cards = useSelector((state:IReduxState)=> state.cards);
+interface ICardContainerProps {
+    sets: number;
+    colors: number;
+    onGameOver: () => void;
+}
+
+export const CardContainer = ({ colors, sets, onGameOver }:ICardContainerProps) => {
+    const [ cards, setCards ] = useState<IPexesoCard[]>(generateRandomCards(sets, colors));
     const timerId = useRef<NodeJS.Timeout>();
     const timerActive = useRef(false);
-    const isFirstCardFlipped = useSelector((state:IReduxState)=> state.isFirstCardFlipped);
-    const numberOfSets = useSelector((state:IReduxState)=> state.numberOfSets);
-    const dispatch = useDispatch();
-
-    useEffect(()=>{
-        dispatch(addCardsAction(generateRandomCards()));
-    }, [ dispatch, numberOfSets ]);
+    const [ firstCardId, setFirstCardId ] = useState(-1);
 
     useEffect(()=>{
         if (cards.length > 0 && cards.every(c=>c.isHidden)){
             setTimeout(() => {
-                dispatch(addCardsAction([]));
-                dispatch(changeGameStateAction('gameover'));
+                onGameOver();
             }, 1000);
         }
 
-    }, [ cards, dispatch ]);
+    }, [ cards, onGameOver ]);
 
+    const flipCard = (cardId: number) => {
+        setCards((prevCards)=> prevCards.map(card=>{
+            if (card.cardId === cardId){
+                card.isFlipped = true;
+            }
+            return card;
+        }));
+    };
+
+    const hideCards = (firstId: number, secondId: number) => {
+        setCards((prevCards)=> prevCards.map(card=>{
+            if (card.cardId === firstId || card.cardId === secondId){
+                card.isHidden = true;
+            }
+            return card;
+        }));
+    };
+
+    const resetCards = () => {
+        setCards((prevCards)=> prevCards.map(card=>{
+            card.isFlipped = false;
+            return card;
+        }));
+    };
 
     const handleCardClick = (cardId:number) => {
         if (timerActive.current) return;
-        dispatch(flipCardAction(cardId));
-        dispatch(setFirstCardFlippedAction(true));
+        if (firstCardId === cardId) return;
+        flipCard(cardId);
+        setFirstCardId(cardId);
         const currentCard = cards.find(c=>c.cardId === cardId);
         const pairCard = cards.find(c=>c.isFlipped && c.cardId !== cardId && c.cardName === currentCard?.cardName);
 
         if (pairCard && currentCard){
             timerActive.current = true;
             timerId.current = setTimeout(() => {
-                dispatch(hideCardsAction({ firstId: currentCard.cardId, secondId: pairCard.cardId }));
-                dispatch(setFirstCardFlippedAction(false));
+                hideCards(currentCard.cardId, pairCard.cardId );
+                setFirstCardId(-1);
                 timerActive.current = false;
             }, 1000);
-        } else if (isFirstCardFlipped){
+        } else if (firstCardId !== -1){
             timerActive.current = true;
             timerId.current = setTimeout(() => {
-                dispatch(resetCardsAction());
-                dispatch(setFirstCardFlippedAction(false));
+                resetCards();
+                setFirstCardId(-1);
                 timerActive.current = false;
             }, 1000);
         }
