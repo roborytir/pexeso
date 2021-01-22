@@ -15,21 +15,7 @@
             "_Base/*": [
                 "src/*"
             ],
-            "_Redux":[
-                "src/redux/*"
-            ],
-            "_Public/*": [
-                "public/*"
-            ],
-            "_Storybook/*": [
-                ".storybook/*"
-            ],
-            "_Lang": [
-                "src/lang/index.ts"
-            ],
-            "_Components/*": [
-                "src/components/*"
-            ],
+
             "_Assets/*": [
                 "src/assets/*"
             ],
@@ -39,7 +25,6 @@
         },
         "rootDirs": [
             "src",
-            ".storybook",
             "config"
         ],
         "typeRoots": [
