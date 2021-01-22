@@ -59,7 +59,7 @@ export const CardContainer = ({ colors, sets, onGameOver }:ICardContainerProps) 
         flipCard(cardId);
         setFirstCardId(cardId);
         const currentCard = cards.find(c=>c.cardId === cardId);
-        const pairCard = cards.find(c=>c.isFlipped && c.cardId !== cardId && c.cardName === currentCard?.cardName);
+        const pairCard = cards.find(c=>c.isFlipped && c.cardId !== cardId && c.cardName === currentCard?.cardName && c.color === currentCard?.color);
 
         if (pairCard && currentCard){
             timerActive.current = true;

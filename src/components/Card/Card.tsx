@@ -26,15 +26,14 @@ export const Card = ({
     const newTransform = useRef(defaultRotation);
 
     useEffect(()=>{
+        console.log(isFlipped)
         if (ref.current){
             ref.current.style.transform = defaultRotation;
         }
     }, [ isFlipped, defaultRotation ]);
 
     const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        newTransform.current = calculateCardTranfsorm(
-            e.clientX, e.clientY, true
-        );
+        if (isFlipped) return;
         onClick(cardId);
     };
 
