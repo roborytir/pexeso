@@ -16,11 +16,16 @@ export const GameManager = () => {
                 }} />
             ) }
             {gameState === 'playing' && (
-                <CardContainer
-                    sets={numberOfSets}
-                    colors={numberOfColors}
-                    onGameOver={()=> {setgameState('gameover');}}
-                />
+                <>
+                    <button style={{
+                        position: 'absolute', top: '1rem', left: '1rem'
+                    }}>Main Menu</button>
+                    <CardContainer
+                        sets={numberOfSets}
+                        colors={numberOfColors}
+                        onGameOver={()=> {setgameState('gameover');}}
+                    />
+                </>
             )}
             {gameState === 'gameover' && (
                 <GameOver onBackToMainMenu={()=>{setgameState('menu');}} onGameReset={()=>{setgameState('playing');}}/>

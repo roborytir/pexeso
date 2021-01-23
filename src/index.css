@@ -22,3 +22,17 @@ body {
 svg path {
     fill: inherit;
 }
+
+button {
+    border: none;
+    background: var(--c-primary);
+    color: var(--c-text-white);
+    transition: background-color 0.2s ease-out;
+    padding: 1rem;
+    border-radius: 0.2rem;
+}
+
+button:hover {
+    background: var(--c-primary-hover);
+
+}
