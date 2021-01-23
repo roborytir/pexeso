@@ -1,5 +1,6 @@
 .mainMenu {
-    padding: 10rem;
+    padding-top: 10rem;
+    margin: 0 auto;
     max-width: 96rem;
     display: flex;
     flex-direction: column;

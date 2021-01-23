@@ -1,8 +1,28 @@
 .cardContainer {
     display: grid;
-    grid-template-columns: repeat(8, minmax(100px, 1fr));
-    max-width: 120rem;
+    grid-template-columns: repeat(8, minmax(10rem, 1fr));
+    max-width: 100rem;
     margin: 5rem auto;
     align-items: center;
     justify-items: center;
+    gap: 1rem;
+}
+
+
+/* Tablet */
+@media screen and (max-width: 64em) {
+    .cardContainer {
+        margin-top: 7rem;
+        max-width: 80rem;
+        grid-template-columns: repeat(4, minmax(8rem, 1fr));
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 26em) {
+    .cardContainer {
+        max-width: 30rem;
+        grid-template-columns: repeat(4, minmax(7rem, 1fr));
+
+    }
 }

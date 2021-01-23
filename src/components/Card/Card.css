@@ -4,6 +4,25 @@
     position: relative;
     animation-fill-mode: forwards;
     animation-duration: 0.8s;
+    width: 10rem;
+    height: 10rem;
+}
+
+/* Tablet */
+@media screen and (max-width: 64em) {
+    .card {
+        width: 8rem;
+        height: 8rem;
+    }
+}
+
+/* Mobile */
+@media screen and (max-width: 26em) {
+    .card {
+        width: 7rem;
+        height: 7rem;
+
+    }
 }
 
 .cardSymbol {
@@ -11,15 +30,17 @@
     top: 0;
     left: 0;
     padding: 2rem;
+    height: 100%;
+    width: 100%;
 }
 
 @keyframes :global(popout) {
     from {
-        transform: scale(0.75) perspective(100px) rotateX(0deg) rotateY(180deg);
+        transform: scale(1) perspective(100px) rotateX(0deg) rotateY(180deg);
     }
 
     15% {
-        transform: scale(1.1) perspective(100px) rotateX(0deg) rotateY(180deg);
+        transform: scale(1.2) perspective(100px) rotateX(0deg) rotateY(180deg);
     }
 
     to {

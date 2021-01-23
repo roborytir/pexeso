@@ -9,7 +9,7 @@ export const GameManager = () => {
     const [ gameState, setgameState ] = useState<GameState>('menu');
 
     return (
-        <div>
+        <>
             {gameState === 'menu' && (
                 <MainMenu onGameStart={(sets, colors)=>{
                     setNumberOfSets(sets); setNumberOfColors(colors); setgameState('playing');
@@ -35,7 +35,7 @@ export const GameManager = () => {
             {gameState === 'gameover' && (
                 <GameOver onBackToMainMenu={()=>{setgameState('menu');}} onGameReset={()=>{setgameState('playing');}}/>
             )}
-        </div>
+        </>
     );
 
 };

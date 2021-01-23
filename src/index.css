@@ -8,9 +8,9 @@
 }
 
 html {
-    background-color: var(--c-background);
     font-size: 62.5%;
     height: 100%;
+    background: var(--c-background); 
 }
 
 body {
@@ -18,8 +18,6 @@ body {
     font-size: 1.6em;
     color: var(--c-text-base);
     height: 100%;
-    position: relative;
-    background: linear-gradient(var(--c-background), var(--c-primary-hover));
     overflow: auto;
 }
 
@@ -39,4 +37,19 @@ button {
 button:hover {
     background: var(--c-primary-hover);
 
+}
+
+:global(#app){
+    overflow: auto;
+    position: relative;
+}
+
+:global(.app-background) {
+    top: 0;
+    left: 0;
+    z-index: -1;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(var(--c-background), var(--c-primary-hover));
 }

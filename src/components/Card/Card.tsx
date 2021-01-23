@@ -12,17 +12,12 @@ export interface ICardProps {
     color: string;
     isFlipped?:boolean;
     isHidden?:boolean;
-    sizeX?: number;
-    sizeY?:number;
 }
 
-export const Card = ({
-    sizeX = 128, sizeY = 128,
-    isFlipped, isHidden, cardName, cardId, onClick, color
-}: ICardProps) => {
+export const Card = ({ isFlipped, isHidden, cardName, cardId, onClick, color }: ICardProps) => {
     const ref = useRef<HTMLDivElement>(null);
     let flippedRotation = isFlipped ? -180 : 0;
-    const defaultRotation = `perspective(100px) rotateX(0deg) rotateY(${flippedRotation}deg) scale(0.75)`;
+    const defaultRotation = `perspective(100px) rotateX(0deg) rotateY(${flippedRotation}deg)`;
     const newTransform = useRef(defaultRotation);
 
     useEffect(()=>{
@@ -47,7 +42,7 @@ export const Card = ({
         if (invert){
             flippedRotation = isFlipped ? 0 : -180;
         }
-        return `perspective(100px) rotateX(${-rotateX}deg) rotateY(${rotateY + flippedRotation}deg) scale(0.75)`;
+        return `perspective(100px) rotateX(${-rotateX}deg) rotateY(${rotateY + flippedRotation}deg)`;
     };
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -70,8 +65,6 @@ export const Card = ({
             data-cardname={cardName}
             ref={ref}
             style={{
-                width: sizeX,
-                height: sizeY,
                 pointerEvents: (isHidden) ? 'none' : 'all',
                 transform: newTransform.current,
                 animationName: isHidden ? 'popout' : 'initial',
@@ -86,11 +79,7 @@ export const Card = ({
             {isFlipped && (
                 <Symbol
                     className={css.cardSymbol}
-                    style={{
-                        maxWidth: sizeX,
-                        maxHeight: sizeY,
-                        fill: color
-                    }}
+                    style={{ fill: color }}
                 />
             )}
         </div>
