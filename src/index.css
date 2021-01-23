@@ -8,15 +8,19 @@
 }
 
 html {
+    background-color: var(--c-background);
     font-size: 62.5%;
+    height: 100%;
 }
 
 body {
-    /* font-family: var(--fontsBase); */
-    font-family: system-ui;
+    font-family: var(--fontsBase);
     font-size: 1.6em;
     color: var(--c-text-base);
-    background-color: var(--c-background);
+    height: 100%;
+    position: relative;
+    background: linear-gradient(var(--c-background), var(--c-primary-hover));
+    overflow: auto;
 }
 
 svg path {

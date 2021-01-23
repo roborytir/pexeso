@@ -15,19 +15,25 @@ export const MainMenu = ({ onGameStart }:IMainMenuProps) => {
     return (
         <div className={css.mainMenu}>
             <h1 className={css.title}>PEXESO</h1>
-            <div>
-                <h3>Number of sets</h3>
-                <SetsChanger
-                    amount={numberOfSets}
-                    onChange={(amount)=> {setNumberOfSets(amount);}}
-                    maxAmount={cardSymbols.length}
-                />
-                <h3>Number of Colors</h3>
-                <SetsChanger
-                    amount={numberOfColors}
-                    onChange={(amount)=> {setNumberOfColors(amount);}}
-                    maxAmount={colorSet.length}
-                />
+            <div className={css.settingsContainer}>
+                <div className={css.settingsChanger}>
+                    <h3>Sets:&nbsp;</h3>
+                    <SetsChanger
+                        amount={numberOfSets}
+                        onChange={(amount)=> {setNumberOfSets(amount);}}
+                        maxAmount={cardSymbols.length}
+                        minAmount={3}
+                    />
+                </div>
+                <div className={css.settingsChanger}>
+                    <h3>Colors:&nbsp;</h3>
+                    <SetsChanger
+                        amount={numberOfColors}
+                        onChange={(amount)=> {setNumberOfColors(amount);}}
+                        maxAmount={colorSet.length}
+                        minAmount={3}
+                    />
+                </div>
             </div>
             <button
                 className={css.playButton}

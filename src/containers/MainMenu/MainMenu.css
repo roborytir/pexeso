@@ -1,5 +1,5 @@
 .mainMenu {
-    margin: 10rem auto;
+    padding: 10rem;
     max-width: 96rem;
     display: flex;
     flex-direction: column;
@@ -23,3 +23,15 @@
     min-width: 10rem;
     max-width: 10rem;
 }
+
+.settingsContainer{
+    display: flex;
+    align-items: center;
+}
+
+.settingsChanger{
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+

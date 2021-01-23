@@ -5,12 +5,13 @@ export interface ISetsChangerProps {
     onChange: (amount: number) => void;
     amount: number;
     maxAmount: number;
+    minAmount: number;
 }
 
-export const SetsChanger = ({ amount, onChange, maxAmount }: ISetsChangerProps) => {
+export const SetsChanger = ({ amount, onChange, maxAmount, minAmount }: ISetsChangerProps) => {
 
     const handleChange = (decrease = false) => {
-        if (decrease && amount > 1){
+        if (decrease && amount > minAmount){
             onChange(amount - 1);
         }
 

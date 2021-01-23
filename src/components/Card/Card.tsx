@@ -26,7 +26,6 @@ export const Card = ({
     const newTransform = useRef(defaultRotation);
 
     useEffect(()=>{
-        console.log(isFlipped)
         if (ref.current){
             ref.current.style.transform = defaultRotation;
         }

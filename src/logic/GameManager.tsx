@@ -17,9 +17,14 @@ export const GameManager = () => {
             ) }
             {gameState === 'playing' && (
                 <>
-                    <button style={{
-                        position: 'absolute', top: '1rem', left: '1rem'
-                    }}>Main Menu</button>
+                    <button
+                        style={{
+                            position: 'absolute', top: '1rem', left: '1rem'
+                        }}
+                        onClick={()=> setgameState('menu')}
+                    >
+                        Main Menu
+                    </button>
                     <CardContainer
                         sets={numberOfSets}
                         colors={numberOfColors}

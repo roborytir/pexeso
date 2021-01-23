@@ -3,3 +3,7 @@
     margin: 10rem auto;
     text-align: center;
 }
+
+.gameOver button {
+    margin: 1rem;
+}
