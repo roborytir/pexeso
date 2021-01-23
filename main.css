@@ -1,29 +1,126 @@
 .Card-card-3iVDytAG {
-    background-image: url(./assets/card.svg);
-    -webkit-transform: scale(0.75);
-            transform: scale(0.75);
-    background-size: cover;
-    background-repeat: no-repeat;
+    -webkit-transition: -webkit-transform 0.15s ease-out;
+    transition: -webkit-transform 0.15s ease-out;
+    transition: transform 0.15s ease-out;
+    transition: transform 0.15s ease-out, -webkit-transform 0.15s ease-out;
+    -webkit-transform: perspective(100px);
+            transform: perspective(100px);
+    position: relative;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+    -webkit-animation-duration: 0.8s;
+            animation-duration: 0.8s;
+    width: 10rem;
+    height: 10rem;
+}
+
+/* Tablet */
+
+@media screen and (max-width: 64em) {
+    .Card-card-3iVDytAG {
+        width: 8rem;
+        height: 8rem;
+    }
+}
+
+/* Mobile */
+
+@media screen and (max-width: 26em) {
+    .Card-card-3iVDytAG {
+        width: 7rem;
+        height: 7rem;
+
+    }
 }
 
 .Card-cardSymbol-7hO2SxH9 {
-    background-image: url(./assets/cards.svg);
-    background-size: 1024px 1024px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    height: 100%;
+    width: 100%;
+}
+
+@-webkit-keyframes popout {
+    from {
+        -webkit-transform: scale(1) perspective(100px) rotateX(0deg) rotateY(180deg);
+                transform: scale(1) perspective(100px) rotateX(0deg) rotateY(180deg);
+    }
+
+    15% {
+        -webkit-transform: scale(1.2) perspective(100px) rotateX(0deg) rotateY(180deg);
+                transform: scale(1.2) perspective(100px) rotateX(0deg) rotateY(180deg);
+    }
+
+    to {
+        -webkit-transform: scale(0) perspective(100px) rotateX(0deg) rotateY(180deg);
+                transform: scale(0) perspective(100px) rotateX(0deg) rotateY(180deg);
+
+    }
+}
+
+@keyframes popout {
+    from {
+        -webkit-transform: scale(1) perspective(100px) rotateX(0deg) rotateY(180deg);
+                transform: scale(1) perspective(100px) rotateX(0deg) rotateY(180deg);
+    }
+
+    15% {
+        -webkit-transform: scale(1.2) perspective(100px) rotateX(0deg) rotateY(180deg);
+                transform: scale(1.2) perspective(100px) rotateX(0deg) rotateY(180deg);
+    }
+
+    to {
+        -webkit-transform: scale(0) perspective(100px) rotateX(0deg) rotateY(180deg);
+                transform: scale(0) perspective(100px) rotateX(0deg) rotateY(180deg);
+
+    }
 }
 .CardContainer-cardContainer-30BB4bth {
     display: grid;
-    grid-template-columns: repeat(8, minmax(100px, 1fr));
-    max-width: 120rem;
-    margin: 2rem auto;
+    grid-template-columns: repeat(8, minmax(10rem, 1fr));
+    max-width: 100rem;
+    margin: 5rem auto;
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
     justify-items: center;
+    grid-gap: 1rem;
+    gap: 1rem;
+}
+
+
+/* Tablet */
+
+
+@media screen and (max-width: 64em) {
+    .CardContainer-cardContainer-30BB4bth {
+        margin-top: 7rem;
+        max-width: 80rem;
+        grid-template-columns: repeat(4, minmax(8rem, 1fr));
+    }
+}
+
+
+/* Mobile */
+
+
+@media screen and (max-width: 26em) {
+    .CardContainer-cardContainer-30BB4bth {
+        max-width: 30rem;
+        grid-template-columns: repeat(4, minmax(7rem, 1fr));
+
+    }
 }
 .GameOver-gameOver-3DFxGc8e {
     color: var(--c-text-white);
     margin: 10rem auto;
     text-align: center;
+}
+
+.GameOver-gameOver-3DFxGc8e button {
+    margin: 1rem;
 }
 .SetsChanger-setsChanger-1w2mjo5q {
     display: -webkit-box;
@@ -33,30 +130,50 @@
         -ms-flex-pack: center;
             justify-content: center;
     color: var(--c-text-white);
-    margin-top: 1rem;
+}
+
+.SetsChanger-arrow-1dB3fFhc {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    -webkit-transition: border-color,-webkit-transform 0.2s ease-out;
+    transition: border-color,-webkit-transform 0.2s ease-out;
+    transition: border-color,transform 0.2s ease-out;
+    transition: border-color,transform 0.2s ease-out,-webkit-transform 0.2s ease-out;
+    border-color: var(--c-primary);
+}
+
+.SetsChanger-arrow-1dB3fFhc:hover{
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
 }
 
 .SetsChanger-leftArrow-3fvcTSRa {
-    display: inline-block;
     margin-right: 1rem;
     border-top: 1rem solid transparent;
     border-right: 2rem solid var(--c-primary);
     border-bottom: 1rem solid transparent;
-    width: 0;
-    height: 0;
+}
+
+.SetsChanger-leftArrow-3fvcTSRa:hover{
+    border-right: 2rem solid var(--c-primary-hover);
+
 }
 
 .SetsChanger-rightArrow-3Cy27Vkv {
-    display: inline-block;
     margin-left: 1rem;
     border-top: 1rem solid transparent;
     border-bottom: 1rem solid transparent;
     border-left: 2rem solid var(--c-primary);
-    width: 0;
-    height: 0;
+}
+
+.SetsChanger-rightArrow-3Cy27Vkv:hover{
+    border-left: 2rem solid var(--c-primary-hover);
+
 }
 .MainMenu-mainMenu-1QC0Z7wy {
-    margin: 10rem auto;
+    padding-top: 10rem;
+    margin: 0 auto;
     max-width: 96rem;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -87,11 +204,33 @@
     min-width: 10rem;
     max-width: 10rem;
 }
+
+.MainMenu-settingsContainer-HjtTXVmC{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.MainMenu-settingsChanger-1WPsldeK{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-right: 1rem;
+}
+
+
 :root {
     --c-text-base: #141414;
     --c-text-white: #ececec;
     --c-background: #272c36;
-    --c-primary: #2c6eeb;
+    --c-primary: #3d7bec;
+    --c-primary-hover: #2d60be;
 }
 :root {
     --fontsBase: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
@@ -106,18 +245,53 @@
 }
 html {
     font-size: 62.5%;
+    height: 100%;
+    background: #272c36;
+    background: var(--c-background); 
 }
 body {
-    /* font-family: var(--fontsBase); */
-    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    "Helvetica", "Arial", sans-serif;
+    font-family: var(--fontsBase);
     font-size: 1.6em;
     color: #141414;
     color: var(--c-text-base);
-    background-color: #272c36;
-    background-color: var(--c-background);
+    height: 100%;
+    overflow: auto;
 }
-.index-test-346xYzrQ {
-    display: grid;
-    -webkit-filter: blur(10px);
-            filter: blur(10px);
+svg path {
+    fill: inherit;
+}
+button {
+    border: none;
+    background: #3d7bec;
+    background: var(--c-primary);
+    color: #ececec;
+    color: var(--c-text-white);
+    -webkit-transition: background-color 0.2s ease-out;
+    transition: background-color 0.2s ease-out;
+    padding: 1rem;
+    border-radius: 0.2rem;
+}
+button:hover {
+    background: #2d60be;
+    background: var(--c-primary-hover);
+
+}
+#app{
+    overflow: auto;
+    position: relative;
+}
+.app-background {
+    top: 0;
+    left: 0;
+    z-index: -1;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background: -webkit-gradient(linear, left top, left bottom, from(#272c36), to(#2d60be));
+    background: linear-gradient(#272c36, #2d60be);
+    background: -webkit-gradient(linear, left top, left bottom, from(var(--c-background)), to(var(--c-primary-hover)));
+    background: linear-gradient(var(--c-background), var(--c-primary-hover));
 }
