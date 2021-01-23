@@ -5,22 +5,36 @@
     margin-top: 1rem;
 }
 
-.leftArrow {
+.arrow {
     display: inline-block;
+    width: 0;
+    height: 0;
+    transition: border-color,transform 0.2s ease-out;
+    border-color: var(--c-primary);
+}
+
+.arrow:hover{
+    transform: scale(1.2);
+}
+
+.leftArrow {
     margin-right: 1rem;
     border-top: 1rem solid transparent;
     border-right: 2rem solid var(--c-primary);
     border-bottom: 1rem solid transparent;
-    width: 0;
-    height: 0;
+}
+.leftArrow:hover{
+    border-right: 2rem solid var(--c-primary-hover);
+
 }
 
 .rightArrow {
-    display: inline-block;
     margin-left: 1rem;
     border-top: 1rem solid transparent;
     border-bottom: 1rem solid transparent;
     border-left: 2rem solid var(--c-primary);
-    width: 0;
-    height: 0;
+}
+.rightArrow:hover{
+    border-left: 2rem solid var(--c-primary-hover);
+
 }

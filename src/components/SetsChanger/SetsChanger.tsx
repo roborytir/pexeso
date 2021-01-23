@@ -23,9 +23,9 @@ export const SetsChanger = ({ amount, onChange, maxAmount }: ISetsChangerProps) 
 
     return (
         <div className={css.setsChanger}>
-            <span className={css.leftArrow} onClick={()=> {handleChange(true);}}/>
+            <span className={`${css.arrow} ${css.leftArrow}`} onClick={()=> {handleChange(true);}}/>
             <span className={css.amount}>{amount}</span>
-            <span className={css.rightArrow} onClick={()=> {handleChange();}}/>
+            <span className={`${css.arrow} ${css.rightArrow}`} onClick={()=> {handleChange();}}/>
         </div>
     );
 };
